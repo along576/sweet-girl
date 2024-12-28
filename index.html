@@ -1,0 +1,759 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>sweet-girl</title>
+</head>
+<link rel="stylesheet" href="img/CSS.css?v=3">
+<script src="./jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="TweenMax.min.js"></script>
+
+<style type="text/css">
+  body,
+  html {
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+    background: #000000;
+    height: 90%;
+  }
+
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden
+  }
+
+  .svoiceIcon {
+    animation-name: colorswitchs;
+    animation-duration: 3s;
+    /*动画时间*/
+    animation-fill-mode: both;
+    /*播放后的状态*/
+    animation-iteration-count: infinite;
+    /*动作循环的次数：infinite 无限循环*/
+  }
+
+  @keyframes colorswitchs {
+    0% {
+      color: #0087C9
+    }
+
+    20% {
+      color: #EF4A53
+    }
+
+    40% {
+      color: #804cfa
+    }
+
+    60% {
+      color: #FFB463
+    }
+
+    80% {
+      color: #33D5D4
+    }
+
+    100% {
+      color: #0087C9
+    }
+  }
+
+  /* 心跳结束 */
+  .music {
+    position: fixed;
+    right: 8%;
+    top: 3%;
+    width: 120px;
+    height: 120px;
+    z-index: 999999;
+    opacity: 0.5
+  }
+
+  .musicRotate {
+    animation-name: musicrotate;
+    animation-duration: 4s;
+    /*动画时间*/
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    /* Safari 和 Chrome */
+    animation-fill-mode: both;
+    /*播放后的状态*/
+    animation-iteration-count: infinite;
+    /*动作循环的次数：infinite 无限循环*/
+  }
+
+  @keyframes musicrotate {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+
+    25% {
+      -webkit-transform: rotate(90deg);
+    }
+
+    50% {
+      -webkit-transform: rotate(180deg);
+    }
+
+    75% {
+      -webkit-transform: rotate(270deg);
+    }
+
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  canvas {
+    position: absolute;
+    width: 100%;
+  }
+
+  .control {
+    position: absolute;
+  }
+
+  .control input {
+    border: 0;
+    margin: 0;
+    padding: 15px;
+    outline: none;
+    text-align: center;
+  }
+
+  .control button {
+    border: 0;
+    margin: 0;
+    padding: 15px;
+    outline: none;
+    background: #333;
+    color: #fff;
+  }
+
+  .control button:focus,
+  .control button:hover {
+    background: #222
+  }
+  .goto {
+    font-size: 100px;
+    color: #e5e5e5;
+    position: fixed;
+    bottom: 200px;
+    right: 200px;
+    z-index: 9999;
+  }
+  /*心跳开始 */
+.heart{
+   width: 100px;
+   height: 100px;
+   background: #e5e5e5;
+   /* position: relative; */
+   filter:drop-shadow(0px 0px 20px #e5e5e5);
+   transform: rotate(45deg); 
+   margin: 20px auto; 
+}
+.heart{
+  animation-name:heartbeat;
+  animation-duration: 1s; /*动画时间*/
+  animation-fill-mode: both; /*播放后的状态*/
+  animation-iteration-count: infinite; /*动作循环的次数：infinite 无限循环*/
+}
+.heart:before, .heart:after{
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #e5e5e5;
+    border-radius: 50px;
+} 
+.heart:before{
+   left: -50px;  
+}
+.heart:after{
+   left: 0;
+   top: -50px;
+}
+@keyframes heartbeat{
+    0%{transform: rotate(45deg) scale(0.8,0.8); opacity: 1;}
+    25%{transform: rotate(45deg) scale(1,1); opacity: 0.8;}
+    100%{transform: rotate(45deg) scale(0.8,0.8); opacity: 1;}
+}
+/* 心跳结束 */
+ 
+#wrapper {
+    position:absolute;
+    top:20px;
+    left:86%;
+    width:200px;
+    height:200px;
+    margin-left:-100px;
+    animation: moonline 5s linear;
+}
+
+@-webkit-keyframes moonline {
+    0% {top:250px;left:0%;opacity:0;}
+    30% {top:150px;left:40%;opacity:0.5;}
+    80% {top:50px;left:80%;opacity:1;}
+}
+#circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background-color: #EFEFEF;
+    box-shadow:0 0 40px #FFFFFF;
+    border-radius: 100px;
+    animation:moonlight 5s linear;
+
+}
+@-webkit-keyframes moonlight {
+    0% {-webkit-box-shadow:0 0 10px #FFFFFF;}
+    30% {-webkit-box-shadow:0 0 15px #FFFFFF;}
+    40% {-webkit-box-shadow:0 0 20px #FFFFFF;}
+    50% {-webkit-box-shadow:0 0 25px #FFFFFF;}
+    100% {-webkit-box-shadow:0 0 30px #FFFFFF;}
+}
+.star {
+  position: relative;
+  width: 0px;
+  height: 0px;
+  border-color: white transparent transparent transparent;
+  border-width: 4.49px 6.18px;
+  border-style: solid;
+  z-index: 99999999999999999999999999999;
+}
+.star::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -6.18px;
+  top: -4.49px;
+  border-color: white transparent transparent transparent;
+  border-width: 4.49px 6.18px;
+  border-style: solid;
+  transform: rotate(72deg);
+  transform-origin: 50% 22.5%;
+}
+.star::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -6.18px;
+  top: -4.49px;
+  border-color: white transparent transparent transparent;
+  border-width: 4.49px 6.18px;
+  border-style: solid;
+  transform: rotate(-72deg);
+  transform-origin: 50% 22.5%;
+}
+.star {
+ animation: twinkle 2s infinite;
+}
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+</style>
+<body>
+  <div class="control" style="position:absolute; z-index: 9999999;">
+  </div>
+  <audio id="player" src="img/love.mp3" loop="loop" hidden="true" autoplay="autoplay"></audio>
+  <img onclick="playMusic(this)" class="music musicRotate" src="img/musicP.png">
+  <div onclick="goPic()" class="goto heart"></div>
+  <div class="pic_box">
+    <div id="wrapper">
+          <div id="circle"></div>
+    </div>
+    
+      <div class="wrap">
+  
+      <div class="cube">
+  
+        <div class="out_front">
+          <img src="img/1.jpg" class="pic">
+        </div>
+  
+        <div class="out_back">
+          <img src="img/2.jpg" class="pic">
+        </div>
+  
+        <div class="out_left">
+          <img src="img/3.jpg" class="pic">
+        </div>
+        <div class="out_right">
+          <img src="img/4.jpg" class="pic">
+        </div>
+        <div class="out_top">
+          <img src="img/5.jpg" class="pic">
+        </div>
+        <div class="out_bottom">
+          <img src="img/6.jpg" class="pic">
+        </div>
+  
+        <span class="in_front">
+          <img src="img/7.jpg" class="in_pic">
+        </span>
+        <span class="in_back">
+          <img src="img/8.jpg" class="in_pic">
+        </span>
+        <span class="in_left">
+          <img src="img/9.jpg" class="in_pic">
+        </span>
+        <span class="in_right">
+          <img src="img/10.jpg" class="in_pic">
+        </span>
+        <span class="in_top">
+          <img src="img/11.jpg" class="in_pic">
+        </span>
+        <span class="in_bottom">
+          <img src="img/12.jpg" class="in_pic">
+        </span>
+      </div>
+    </div>
+  </div>
+  
+</body>
+<script type="text/javascript">
+  var can = document.createElement("canvas");
+  // can.className = 'kuang'
+  document.body.appendChild(can);
+  var ctx = can.getContext('2d');
+  var Fireworks = function () {
+    var self = this;
+    var rand = function (rMi, rMa) { return ~~((Math.random() * (rMa - rMi + 1)) + rMi); }
+    var hitTest = function (x1, y1, w1, h1, x2, y2, w2, h2) { return !(x1 + w1 < x2 || x2 + w2 < x1 || y1 + h1 < y2 || y2 + h2 < y1); };
+    self.init = function () {
+      self.canvas = document.createElement('canvas');
+      self.canvas.width = self.cw = $(window).innerWidth();
+      self.canvas.height = self.ch = $(window).innerHeight();
+      self.particles = [];
+      self.partCount = 150;
+      self.fireworks = [];
+      self.mx = self.cw / 2;
+      self.my = self.ch / 2;
+      self.currentHue = 30;
+      self.partSpeed = 5;
+      self.partSpeedVariance = 10;
+      self.partWind = 50;
+      self.partFriction = 5;
+      self.partGravity = 1;
+      self.hueMin = 0;
+      self.hueMax = 360;
+      self.fworkSpeed = 4;
+      self.fworkAccel = 10;
+      self.hueVariance = 30;
+      self.flickerDensity = 25;
+      self.showShockwave = true;
+      self.showTarget = false;
+      self.clearAlpha = 25;
+      $(document.body).append(self.canvas);
+      self.ctx = self.canvas.getContext('2d');
+      self.ctx.lineCap = 'round';
+      self.ctx.lineJoin = 'round';
+      self.lineWidth = 1;
+      self.bindEvents();
+      self.canvasLoop();
+      self.canvas.onselectstart = function () {
+        return false;
+      };
+    };
+    self.createFireworks = function (startX, startY, targetX, targetY) {
+      var newFirework = {
+        x: startX,
+        y: startY,
+        startX: startX,
+        startY: startY,
+        hitX: false,
+        hitY: false,
+        coordLast: [
+          { x: startX, y: startY },
+          { x: startX, y: startY },
+          { x: startX, y: startY }
+        ],
+        targetX: targetX,
+        targetY: targetY,
+        speed: self.fworkSpeed,
+        angle: Math.atan2(targetY - startY, targetX - startX),
+        shockwaveAngle: Math.atan2(targetY - startY, targetX - startX) + (90 * (Math.PI / 180)),
+        acceleration: self.fworkAccel / 100,
+        hue: self.currentHue,
+        brightness: rand(50, 80),
+        alpha: rand(50, 100) / 100,
+        lineWidth: self.lineWidth
+      };
+      self.fireworks.push(newFirework);
+    };
+    self.canvasLoop = function () {
+      window.requestAnimationFrame(self.canvasLoop, self.canvas);
+      self.ctx.globalCompositeOperation = 'destination-out';
+      self.ctx.fillStyle = 'rgba(0,0,0,' + self.clearAlpha / 100 + ')';
+      self.ctx.fillRect(0, 0, self.cw, self.ch);
+      self.updateFireworks();
+      self.updateParticles();
+      self.drawFireworks();
+      self.drawParticles();
+    };
+    self.drawParticles = function () {
+      var i = self.particles.length;
+      while (i--) {
+        var p = self.particles[i];
+        var coordRand = (rand(1, 3) - 1);
+        self.ctx.beginPath();
+        self.ctx.moveTo(Math.round(p.coordLast[coordRand].x), Math.round(p.coordLast[coordRand].y));
+        self.ctx.lineTo(Math.round(p.x), Math.round(p.y));
+        self.ctx.closePath();
+        self.ctx.strokeStyle = 'hsla(' + p.hue + ', 100%, ' + p.brightness + '%, ' + p.alpha + ')';
+        self.ctx.stroke();
+        if (self.flickerDensity > 0) {
+          var inverseDensity = 50 - self.flickerDensity;
+          if (rand(0, inverseDensity) === inverseDensity) {
+            self.ctx.beginPath();
+            self.ctx.arc(Math.round(p.x), Math.round(p.y), rand(p.lineWidth, p.lineWidth + 3) / 2, 0, Math.PI * 2, false)
+            self.ctx.closePath();
+            var randAlpha = rand(50, 100) / 100;
+            self.ctx.fillStyle = 'hsla(' + p.hue + ', 100%, ' + p.brightness + '%, ' + randAlpha + ')';
+            self.ctx.fill();
+          }
+        }
+      };
+    };
+    self.drawFireworks = function () {
+      var i = self.fireworks.length;
+      self.ctx.globalCompositeOperation = 'lighter';
+      while (i--) {
+        var f = self.fireworks[i];
+        self.ctx.lineWidth = f.lineWidth;
+        var coordRand = (rand(1, 3) - 1);
+        self.ctx.beginPath();
+        self.ctx.moveTo(Math.round(f.coordLast[coordRand].x), Math.round(f.coordLast[coordRand].y));
+        self.ctx.lineTo(Math.round(f.x), Math.round(f.y));
+        self.ctx.closePath();
+        self.ctx.strokeStyle = 'hsla(' + f.hue + ', 100%, ' + f.brightness + '%, ' + f.alpha + ')';
+        self.ctx.stroke();
+        if (self.showTarget) {
+          self.ctx.save();
+          self.ctx.beginPath();
+          self.ctx.arc(Math.round(f.targetX), Math.round(f.targetY), rand(1, 8), 0, Math.PI * 2, false)
+          self.ctx.closePath();
+          self.ctx.lineWidth = 1;
+          self.ctx.stroke();
+          self.ctx.restore();
+        }
+        if (self.showShockwave) {
+          self.ctx.save();
+          self.ctx.translate(Math.round(f.x), Math.round(f.y));
+          self.ctx.rotate(f.shockwaveAngle);
+          self.ctx.beginPath();
+          self.ctx.arc(0, 0, 1 * (f.speed / 5), 0, Math.PI, true);
+          self.ctx.strokeStyle = 'hsla(' + f.hue + ', 100%, ' + f.brightness + '%, ' + rand(25, 60) / 100 + ')';
+          self.ctx.lineWidth = f.lineWidth;
+          self.ctx.stroke();
+          self.ctx.restore();
+        }
+      };
+    };
+    self.updateFireworks = function () {
+      var i = self.fireworks.length;
+      while (i--) {
+        var f = self.fireworks[i];
+        self.ctx.lineWidth = f.lineWidth;
+        vx = Math.cos(f.angle) * f.speed,
+          vy = Math.sin(f.angle) * f.speed;
+        f.speed *= 1 + f.acceleration;
+        f.coordLast[2].x = f.coordLast[1].x;
+        f.coordLast[2].y = f.coordLast[1].y;
+        f.coordLast[1].x = f.coordLast[0].x;
+        f.coordLast[1].y = f.coordLast[0].y;
+        f.coordLast[0].x = f.x;
+        f.coordLast[0].y = f.y;
+        if (f.startX >= f.targetX) {
+          if (f.x + vx <= f.targetX) {
+            f.x = f.targetX;
+            f.hitX = true;
+          } else {
+            f.x += vx;
+          }
+        } else {
+          if (f.x + vx >= f.targetX) {
+            f.x = f.targetX;
+            f.hitX = true;
+          } else {
+            f.x += vx;
+          }
+        }
+        if (f.startY >= f.targetY) {
+          if (f.y + vy <= f.targetY) {
+            f.y = f.targetY;
+            f.hitY = true;
+          } else {
+            f.y += vy;
+          }
+        } else {
+          if (f.y + vy >= f.targetY) {
+            f.y = f.targetY;
+            f.hitY = true;
+          } else {
+            f.y += vy;
+          }
+        }
+        if (f.hitX && f.hitY) {
+          self.createParticles(f.targetX, f.targetY, f.hue);
+          self.fireworks.splice(i, 1);
+        }
+      };
+    };
+    self.createParticles = function (x, y, hue) {
+      var countdown = self.partCount;
+      while (countdown--) {
+        var newParticle = {
+          x: x,
+          y: y,
+          coordLast: [
+            { x: x, y: y },
+            { x: x, y: y },
+            { x: x, y: y }
+          ],
+          angle: rand(0, 360),
+          speed: rand(((self.partSpeed - self.partSpeedVariance) <= 0) ? 1 : self.partSpeed - self.partSpeedVariance, (self.partSpeed + self.partSpeedVariance)),
+          friction: 1 - self.partFriction / 100,
+          gravity: self.partGravity / 2,
+          hue: rand(hue - self.hueVariance, hue + self.hueVariance),
+          brightness: rand(50, 80),
+          alpha: rand(40, 100) / 100,
+          decay: rand(10, 50) / 1000,
+          wind: (rand(0, self.partWind) - (self.partWind / 2)) / 25,
+          lineWidth: self.lineWidth
+        };
+        self.particles.push(newParticle);
+      }
+    };
+    self.updateParticles = function () {
+      var i = self.particles.length;
+      while (i--) {
+        var p = self.particles[i];
+        var radians = p.angle * Math.PI / 180;
+        var vx = Math.cos(radians) * p.speed;
+        var vy = Math.sin(radians) * p.speed;
+        p.speed *= p.friction;
+        p.coordLast[2].x = p.coordLast[1].x;
+        p.coordLast[2].y = p.coordLast[1].y;
+        p.coordLast[1].x = p.coordLast[0].x;
+        p.coordLast[1].y = p.coordLast[0].y;
+        p.coordLast[0].x = p.x;
+        p.coordLast[0].y = p.y;
+        p.x += vx;
+        p.y += vy;
+        p.y += p.gravity;
+        p.angle += p.wind;
+        p.alpha -= p.decay;
+        if (!hitTest(0, 0, self.cw, self.ch, p.x - p.radius, p.y - p.radius, p.radius * 2, p.radius * 2) || p.alpha < .05) {
+          self.particles.splice(i, 1);
+        }
+      };
+    };
+    self.bindEvents = function () {
+      $(self.canvas).on('mousedown', function (e) {
+        self.mx = e.pageX - self.canvas.offsetLeft;
+        self.my = e.pageY - self.canvas.offsetTop;
+        self.currentHue = rand(self.hueMin, self.hueMax);
+        self.createFireworks(self.cw / 2, self.ch, self.mx, self.my);
+      });
+      $(self.canvas).on('mouseup', function (e) {
+        $(self.canvas).off('mousemove.fireworks');
+      });
+    };
+    self.init();
+  }
+
+  function resize() {
+    can.width = window.innerWidth;
+    can.height = window.innerHeight;
+  }
+  const max_radius = 3;
+  const min_radius = 1;
+  //粒子大小
+  const drag = 50;
+  window.onresize = function () {
+    resize();
+  };
+
+  function cfill() {
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, can.width, can.height);
+    ctx.fill();
+  }
+  resize();
+  cfill();
+  class Particle {
+    constructor(pos, target, vel, color, radius) {
+      this.pos = pos;
+      this.target = target;
+      this.vel = vel;
+      this.color = color;
+      this.radius = radius;
+      this.direction = 0;
+    }
+    set(type, value) {
+      this[type] = value;
+    }
+
+    update() {
+      this.radius = 2;
+      this.vel.x = (this.pos.x - this.target.x) / drag;
+      this.vel.y = (this.pos.y - this.target.y) / drag;
+      this.pos.x -= this.vel.x;
+      this.pos.y -= this.vel.y;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.fillStyle = this.color;
+      ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  var particles = [];
+  var colors = ["#bf1337", "#f3f1f3", "#084c8d", "#f2d108", "#efd282"];
+  var bool = true;
+  var current = 0,
+    i;
+
+  function changeText(text) {
+    var current = 0,
+      temp, radius, color;
+    ctx.fillStyle = "#fff";
+    ctx.font = "160px 楷体";
+    ctx.fillText(text, can.width * 0.5 - ctx.measureText(text).width * 0.5, can.height * 0.5 + 60);
+    var data = ctx.getImageData(0, 0, can.width, can.height).data;
+    cfill();
+    for (i = 0; i < data.length; i += 12) {
+      if (data[i] !== 0 && (Math.random() * 10) >= 8.8) {
+        radius = max_radius - Math.random() * min_radius;
+        temp = { x: (i / 4) % can.width, y: ((i / 4) / can.width) };
+        color = colors[0];
+        var p = new Particle(
+          temp, { x: (i / 4) % can.width, y: ((i / 4) / can.width) }, { x: 0, y: 0 },
+          color,
+          radius);
+        particles.push(p);
+        ++current;
+      }
+    }
+    particles.splice(current, particles.length - current);
+  }
+
+  function draw(obj) {
+    ctx.beginPath();
+    ctx.arc(obj.target.x, obj.target.y, obj.radius, 0, 2 * Math.PI);
+    ctx.fillStyle = obj.color;
+    ctx.fill();
+  }
+  changeText("YLT");
+  var t = 0;
+  var id;
+  var fworks = new Fireworks();
+
+  function init() {
+    id = window.requestAnimationFrame(init)
+    if (t >= particles.length - 1) {
+      window.cancelAnimationFrame(id)
+    }
+    draw(particles[t])
+    t++;
+    var rand = function (rMi, rMa) { return ~~((Math.random() * (rMa - rMi + 1)) + rMi); }
+    if (t % 5 == 0) {
+      fworks.currentHue = rand(0, 360);
+      fworks.createFireworks($(window).innerWidth() / 2, $(window).innerHeight(), particles[t].pos.x, particles[t].pos.y);
+    }
+  }
+  init();
+</script>
+<script>
+  document.body.addEventListener('touchmove', function(e){
+          e.preventDefault();
+      }, { passive: false });  //passive 参数不能省略，用来兼容ios和android
+    function star(){
+      $('.star').fadeIn();
+      setTimeout(function(){
+        $('.star').fadeOut()
+      },1000)
+    }
+      
+    function playMusic(obj) {
+          var player = $("#player")[0]; /*jquery对象转换成js对象*/
+          if (player.paused){ /*如果已经暂停*/
+              player.play(); /*播放*/
+              $(obj).addClass('musicRotate');
+              $(obj).attr('src','img/musicP.png')
+          }else {
+              player.pause();/*暂停*/
+              $(obj).removeClass('musicRotate');
+              $(obj).attr('src','img/musicS.png')
+          }
+      }
+  </script>
+  <script>
+   document.querySelector('.pic_box').style.display = 'none'
+   function goPic() {
+     const show = document.querySelector('.pic_box').style.display === 'none'
+      console.log(show)
+      document.querySelector('.pic_box').style.display = show ? 'block' : 'none'
+    }
+  </script>
+  <script src="https://l2dwidget.js.org/lib/L2Dwidget.min.js"></script>  
+  <script>
+      L2Dwidget.init({
+          "model": {
+              "jsonPath": "https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json",
+  　　        "scale": 1
+          },
+          "display": {
+              "position": "left",
+              "width": 550,
+              "height": 600,
+  　　        "hOffset": 0,
+              "vOffset": -20
+          },
+          "mobile": {
+              "show": true,
+              "scale": 0.5
+          },
+          "react": {
+              "opacityDefault": 0.8,
+              "opacityOnHover": 1
+          },
+          "dialog": {
+              "enable": true,
+              "script": {
+                  'tap body': '哎呀！别碰我！',
+                  'tap face': 'happy new years to 2021!',
+              }
+          }
+      });
+      const body = document.querySelector('.wrap')
+      const bodyWidth = 1000
+      const bodyHeight = 1600
+      const frag = document.createDocumentFragment()
+      for (let i = 0; i < 1000; i++) {
+        const star = document.createElement('div')
+        star.classList.add('star')
+        star.style.left = `${Math.random() * bodyWidth}px`
+        star.style.top = `-${Math.random() * bodyHeight}px`
+        star.style.transform = `scale(${Math.random() * 1.2})`
+        star.style.animationDelay = `${Math.random()}s`
+        frag.appendChild(star)
+      }
+      body.appendChild(frag)
+
+  </script>
+</html>
